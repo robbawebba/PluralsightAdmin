@@ -8,6 +8,7 @@
   "author": "Rob Weber",
   "license": "ISC",
   "description": "",
+  "eslintConfig": "eslint.config.json",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.1",

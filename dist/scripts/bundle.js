@@ -10075,7 +10075,7 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
-$ = jQuery = require('jquery'); // jQuery 
+$ = jQuery = require('jquery'); // jQuery
 var App = console.log("Hello world from Browserify");
 
 module.exports = App;
