@@ -8,7 +8,7 @@ var config = {
   port: 9005,
   devBaseUrl: 'http://localhost',
   paths: {
-    html: './src/*.html'
+    html: './src/*.html',
     dist: './dist'
   }
 }
@@ -34,5 +34,10 @@ gulp.task('html', function() {
       .pipe(connect.reload());
 });
 
+// Watches files for changes in src
+gulp.task('watch', function() {
+  gulp.watch(config.paths.html, ['html']);
+});
+
 // Default Gulp task for compiling and deploying to server
-gulp.task('default', ['html', 'open']);
+gulp.task('default', ['html', 'open', 'watch']);
