@@ -3,6 +3,9 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect'); // Runs a local dev server
 var open = require('gulp-open'); // Open a URL in a web browser
+var browserify = require('browserify'); // Bundle JS
+var reactify = require('reactify'); // Transforms React JSX to JS
+var source = require('vinyl-source-stream'); // Use conventional text streams with gulp
 
 var config = {
   port: 9005,
