@@ -22,3 +22,8 @@ gulp.task('connect', function() {
     livereload: true
   });
 });
+
+gulp.task('open', ['connect'], function() {
+  gulp.src('dist/index.html')
+      .pipe(open({uri: config.devBaseUrl + ':' + config.port + '/'}))
+})
