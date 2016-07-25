@@ -12,7 +12,9 @@ var config = {
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
-    dist: './dist'
+    js: './src/**/*.js',
+    dist: './dist',
+    mainJs: './src/main.js'
   }
 }
 
@@ -37,10 +39,22 @@ gulp.task('html', function() {
       .pipe(connect.reload());
 });
 
+// Compile JS
+gulp.task('js', function() {
+  browserify(config.paths.mainJs)
+    .transform(reactify)
+    .bundle()
+    .on('error', console.error.bind(console))
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest(config.paths.dist + '/scripts'))
+    .pipe(connect.reload());
+});
+
 // Watches files for changes in src
 gulp.task('watch', function() {
   gulp.watch(config.paths.html, ['html']);
+  gulp.watch(config.paths.js, ['js']);
 });
 
 // Default Gulp task for compiling and deploying to server
-gulp.task('default', ['html', 'open', 'watch']);
+gulp.task('default', ['js', 'html', 'open', 'watch']);
